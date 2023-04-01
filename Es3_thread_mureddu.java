@@ -8,11 +8,11 @@ public class Es3_thread_mureddu {
         Scanner scan = new Scanner(System.in);  
         System.out.println("Iserisci valore n: ");
 
-        String n = scan.nextLine();
+        int n = scan.nextInt();
 
         System.out.println("Inserisci valore k: ");
 
-        String k = scan.nextLine();
+        int k = scan.nextInt();
 
         
     }
@@ -25,12 +25,11 @@ public class Es3_thread_mureddu {
         }
 
         @Override
-        public int run() {
-            int fattoriale = val;
+        public void run() {
+            
             for(int i=val-1; i>0; i--) {
-                fattoriale *= i;
+                val *= i;
             }
-            return fattoriale;
         }
     }
     
