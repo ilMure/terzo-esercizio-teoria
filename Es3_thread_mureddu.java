@@ -18,9 +18,31 @@ public class Es3_thread_mureddu {
         //istanzio thread
         Fattoriale primoFattoriale = new Fattoriale(n, "fattoriale_N");
         Fattoriale secondoFattoriale = new Fattoriale(k, "fattoriale_K");
-        Fattoriale terzFattoriale = new Fattoriale((n-k), "fattoriale_N-K");
+        Fattoriale terzoFattoriale = new Fattoriale((n-k), "fattoriale_N-K");
         
-        
+        primoFattoriale.start();
+        secondoFattoriale.start();
+        terzoFattoriale.start();
+
+        try {
+            primoFattoriale.join();
+        } catch (InterruptedException e) {
+            System.out.println("errore nel thread: "+primoFattoriale.getName());
+        }
+
+        try {
+            secondoFattoriale.join();
+        } catch (InterruptedException e) {
+            System.out.println("errore nel thread: "+secondoFattoriale.getName());
+        }
+
+        try {
+            terzoFattoriale.join();
+        } catch (InterruptedException e) {
+            System.out.println("errore nel thread: "+terzoFattoriale.getName());
+        }
+
+        System.out.println("Risultato = "+ (primoFattoriale.getVal() / (secondoFattoriale.getVal() * terzoFattoriale.getVal())));
     
     }
 
