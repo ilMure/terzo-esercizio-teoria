@@ -18,11 +18,11 @@ public class Es3_thread_mureddu {
     
             k = scan.nextInt();
 
-            if ((n - k) < 1){
+            if ((n - k) < 0){
                 System.out.println("errore nell'inserimento: la differenza n-k deve essere maggiore di 0");
             }
 
-        }while((n - k) < 1);
+        }while((n - k) < 0);
         
 
         //istanzio thread
@@ -54,12 +54,19 @@ public class Es3_thread_mureddu {
             System.out.println("errore nel thread: "+terzoFattoriale.getName());
         }
 
-        System.out.println("Risultato = "+ (primoFattoriale.getVal() / (secondoFattoriale.getVal() * terzoFattoriale.getVal())));
+        System.out.println(primoFattoriale.getVal());
+        System.out.println(secondoFattoriale.getVal());
+    
+        System.out.println(terzoFattoriale.getVal());
+
+        int risultato = (primoFattoriale.getVal() / (secondoFattoriale.getVal() * terzoFattoriale.getVal()));
+
+        System.out.println("C ("+n+", "+k+") = "+ risultato);
     
     }
 
     public static class Fattoriale extends Thread{
-        private int val;
+        private int val = 0;
 
         public Fattoriale(int val, String nome){
             super(nome);
@@ -72,8 +79,9 @@ public class Es3_thread_mureddu {
 
         @Override
         public void run() {           
-            for(int i=val-1; i>0; i--) {
+            for(int i=val-1; i>=1; i--) {
                 val *= i;
+                val = val--;
             }
         }
     }
