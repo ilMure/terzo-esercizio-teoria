@@ -54,11 +54,6 @@ public class Es3_thread_mureddu {
             System.out.println("errore nel thread: "+terzoFattoriale.getName());
         }
 
-        System.out.println(primoFattoriale.getVal());
-        System.out.println(secondoFattoriale.getVal());
-    
-        System.out.println(terzoFattoriale.getVal());
-
         int risultato = (primoFattoriale.getVal() / (secondoFattoriale.getVal() * terzoFattoriale.getVal()));
 
         System.out.println("C ("+n+", "+k+") = "+ risultato);
@@ -79,6 +74,7 @@ public class Es3_thread_mureddu {
 
         @Override
         public void run() {           
+            //calcolo fattoriale di "val"
             for(int i=val-1; i>=1; i--) {
                 val *= i;
                 val = val--;
