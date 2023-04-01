@@ -7,13 +7,23 @@ public class Es3_thread_mureddu {
     public static void main(String[] args) {
         //input da utente
         Scanner scan = new Scanner(System.in);  
-        System.out.println("Iserisci valore n: ");
+        int n;
+        int k;
+        do{
+            System.out.println("Iserisci valore n: ");
 
-        int n = scan.nextInt();
+            n = scan.nextInt();
+    
+            System.out.println("Inserisci valore k: ");
+    
+            k = scan.nextInt();
 
-        System.out.println("Inserisci valore k: ");
-
-        int k = scan.nextInt();
+            if ((n - k) < 1){
+                System.out.println("errore nell'inserimento: la differenza n-k deve essere maggiore di 0");
+            }
+            
+        }while((n - k) < 1);
+        
 
         //istanzio thread
         Fattoriale primoFattoriale = new Fattoriale(n, "fattoriale_N");
