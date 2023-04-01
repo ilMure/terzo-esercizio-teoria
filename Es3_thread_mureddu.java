@@ -21,7 +21,7 @@ public class Es3_thread_mureddu {
             if ((n - k) < 1){
                 System.out.println("errore nell'inserimento: la differenza n-k deve essere maggiore di 0");
             }
-            
+
         }while((n - k) < 1);
         
 
@@ -30,10 +30,12 @@ public class Es3_thread_mureddu {
         Fattoriale secondoFattoriale = new Fattoriale(k, "fattoriale_K");
         Fattoriale terzoFattoriale = new Fattoriale((n-k), "fattoriale_N-K");
         
+        //partono i thrad
         primoFattoriale.start();
         secondoFattoriale.start();
         terzoFattoriale.start();
 
+        //join dei thread
         try {
             primoFattoriale.join();
         } catch (InterruptedException e) {
@@ -69,8 +71,7 @@ public class Es3_thread_mureddu {
         }
 
         @Override
-        public void run() {
-            
+        public void run() {           
             for(int i=val-1; i>0; i--) {
                 val *= i;
             }
